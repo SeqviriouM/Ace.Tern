@@ -3962,9 +3962,7 @@ ace.define("ace/tern/tern",["require","exports","module","ace/config","ace/snipp
     var onCursorChange_Tern = function (e, editor_getSession_selection) {
         clearTimeout(debounceArgHints);
         debounceArgHints = setTimeout(function () {
-            // editor_for_OnCusorChange.getSession().ternServer.updateArgHints(editor_for_OnCusorChange);
             editor_for_OnCusorChange.getSession().ternServer.updateArgHints(editor_for_OnCusorChange);
-            // editor_getSession_selection.ternServer.updateArgHints(editor_for_OnCusorChange);
         }, 10);
     };
     var onAfterExec_Tern = function (e, commandManager) {
@@ -4003,12 +4001,8 @@ ace.define("ace/tern/tern",["require","exports","module","ace/config","ace/snipp
                     createTernServer(function () {
                         self.completers = completers;
                         self.getSession().ternServer = aceTs;
-                        // self.ternServer = aceTs;
                         self.commands.addCommand(Autocomplete.startCommand);
                         self.getSession().selection.on('changeCursor', onCursorChange_Tern);
-                        // editor_for_OnCusorChange.getSession().selection.on('changeCursor', onCursorChange_Tern);
-                        // // self.selection.on('changeCursor', onCursorChange_Tern);
-                        // // self.commands.on('changeCursor', onCursorChange_Tern);
                         self.commands.on('afterExec', onAfterExec_Tern);
                         aceTs.bindAceKeys(self);
                         if (ternOptions.startedCb) ternOptions.startedCb();
