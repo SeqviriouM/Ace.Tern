@@ -1565,7 +1565,9 @@ ace.define("ace/autocomplete",["require","exports","module","ace/keyboard/hash_h
             var _id = this.gatherCompletionsId;
             this.gatherCompletions(this.editor, function(err, results) {
                 var detachIfFinished = function(popupData) {
-                    this.popup.setData(popupData);
+                    if (this.popup) {
+                        this.popup.setData(popupData);
+                    }
                     if (!results.finished) return;
                     return this.detach();
                 }.bind(this);
